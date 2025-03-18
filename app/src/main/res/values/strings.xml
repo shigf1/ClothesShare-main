@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Clothes Share</string>
+    <string name="home_button_description">Home</string>
+    <string name="messages_button_description">Messages</string>
+    <string name="profile_button_description">Profile</string>
+    <string name="upload_button_description">Upload</string>
+</resources>

@@ -6,6 +6,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.clothesshare.databinding.ActivityProfileBinding
 
 class ProfileActivity : AppCompatActivity() {
@@ -22,6 +24,20 @@ class ProfileActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val recyclerview: RecyclerView = findViewById(R.id.recyclerview)
+
+        recyclerview.layoutManager = LinearLayoutManager(this)
+
+        val data = ArrayList<PostItem>()
+
+        for (i in 1..20) {
+            data.add(PostItem(R.drawable.post_mosaic, "Username $i", "Description $i"))
+        }
+
+        val adapter = PostAdapter(data)
+
+        recyclerview.adapter = adapter
 
         // Set click listeners for navigation buttons
         binding.homebutton.setOnClickListener() {

@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "456092761089",
+    "firebase_url": "https://clothes-share-1ff7b-default-rtdb.firebaseio.com",
+    "project_id": "clothes-share-1ff7b",
+    "storage_bucket": "clothes-share-1ff7b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456092761089:android:b8ad61d776c43f69cf5400",
+        "android_client_info": {
+          "package_name": "com.example.clothesshare"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoQ0w6LaCfe1CEmO1R9_3xrwC0ssgPimY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

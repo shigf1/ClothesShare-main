@@ -2,6 +2,7 @@ package com.example.clothesshare
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -9,9 +10,20 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clothesshare.databinding.ActivityMainBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
+    private lateinit var firebaseRef: DatabaseReference
+
+    private lateinit var postArrayList: ArrayList<PostItem>
+
+    private lateinit var postRecyclerview: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,19 +37,17 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val recyclerview: RecyclerView = findViewById(R.id.recyclerview)
+        postRecyclerview = findViewById(R.id.recyclerview)
 
-        recyclerview.layoutManager = LinearLayoutManager(this)
+        postRecyclerview.layoutManager = LinearLayoutManager(this)
 
-        val data = ArrayList<PostItem>()
+        postRecyclerview.setHasFixedSize(true)
 
-        for (i in 1..20) {
-            data.add(PostItem(R.drawable.post_mosaic, "Username $i", "Description $i"))
-        }
+        postArrayList = arrayListOf<PostItem>()
 
-        val adapter = PostAdapter(data)
+        getUserdata()
 
-        recyclerview.adapter = adapter
+        postRecyclerview.adapter = PostAdapter(postArrayList)
 
         // Set click listeners for navigation buttons
         binding.homebutton.setOnClickListener() {
@@ -55,5 +65,42 @@ class MainActivity : AppCompatActivity() {
         binding.uploadbutton.setOnClickListener() {
             startActivity(Intent(this, UploadActivity::class.java))
         }
+
+
+    }
+
+    private fun getUserdata() {
+        firebaseRef = FirebaseDatabase.getInstance().getReference("Posts")
+
+        firebaseRef.addValueEventListener(object : ValueEventListener{
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                postArrayList.clear()
+
+                if (snapshot.exists()){
+
+                     for (postSnapshot in snapshot.children){
+
+                         val postItem = postSnapshot.getValue(PostItem::class.java)
+
+                         postItem?.let {
+
+                             postArrayList.add(it)
+
+                         }
+
+                     }
+
+                    postRecyclerview.adapter?.notifyDataSetChanged() // Notify adapter
+
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("MainActivity", "Database error: ${error.message}")
+            }
+
+        })
     }
 }

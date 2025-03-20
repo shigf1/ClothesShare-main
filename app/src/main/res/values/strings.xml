@@ -4,4 +4,9 @@
     <string name="messages_button_description">Messages</string>
     <string name="profile_button_description">Profile</string>
     <string name="upload_button_description">Upload</string>
+    <string name="username">Username</string>
+    <string name="item_description">Item description</string>
+    <string name="arrow"><![CDATA[>]]></string>
+    <string name="main_content_area">Main Content Area</string>
+    <string name="profile_content_area">Profile Content Area</string>
 </resources>

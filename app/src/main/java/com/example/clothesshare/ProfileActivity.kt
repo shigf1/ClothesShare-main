@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clothesshare.databinding.ActivityProfileBinding
+import de.hdodenhof.circleimageview.CircleImageView;
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding

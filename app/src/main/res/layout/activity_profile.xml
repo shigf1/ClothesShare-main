@@ -1,40 +1,38 @@
-<?xml version = "1.0" encoding = "utf-8" ?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/profile"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-
-    <android.support.design.widget.AppBarLayout
+    <!-- AppBarLayout with CollapsingToolbar -->
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height = "wrap_content">
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <android.support.design.widget.CollapsingToolbarLayout
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
-            android:layout_width = "match_parent"
-            android:layout_height = "wrap_content"
-            app:expandedTitleGravity="bottom|right|start|center"
-            app:expandedTitleMarginEnd="0dp"
-            app:expandedTitleMarginStart="16dp"
-            app:expandedTitleMarginBottom="50dp"
-
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
-            <!--app:expandedTitleTextAppearance="@style/profileExpandedAppBar"
-            app:collapsedTitleTextAppearance="@style/CollapsedAppBar"
-            app:contentScrim="color/colorPrimary"-->
 
+            <!-- Your header content -->
             <FrameLayout
-                android:layout_width ="match_parent"
-                android:layout_height = "175dp"
-                app:layout_collapseMode ="parallax">
+                android:layout_width="match_parent"
+                android:layout_height="185dp"
+                app:layout_collapseMode="parallax">
+
+                <!-- Your existing header views (profile_cover, profile_image, etc.) -->
+                <!-- ... -->
 
                 <ImageView
                     android:id= "@+id/profile_cover"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
+                    android:contentDescription="profile information"
                     android:minHeight="175dp"
                     android:paddingBottom = "75dp"
                     android:scaleType ="fitXY"
@@ -72,110 +70,71 @@
 
             </FrameLayout>
 
-            <android.support.v7.widget.Toolbar
-                android:id= "@+id/toolbar"
-
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?android:attr/actionBarSize"
-                app:layout_collapseMode = "pin"
-                app:title =""
-                app:titleMarginStart ="0dp"
-                app:titleTextColor="#000" />
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"/>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-<!--      style = "@style/ThemeOverlay.AppCompat.DarkActionBar"-->
-
-        </android.support.design.widget.CollapsingToolbarLayout>
-
-    </android.support.design.widget.AppBarLayout>
-
-
-    <LinearLayout
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginBottom="56dp"> <!-- Add margin to avoid overlap with the bottom navigation bar -->
+        android:layout_marginBottom="56dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:listitem="@layout/cv_post_list_design"/>
 
-        <!-- Your main content goes here -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <!-- Add your main content here -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Profile Content Area"
-                android:textSize="18sp"
-                android:textColor="#000000" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/cv_post_list_design"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-            </androidx.recyclerview.widget.RecyclerView>
-
-
-        </LinearLayout>
-
-     </LinearLayout>
-
-    <!-- Bottom Navigation Bar -->
-     <LinearLayout
+    <!-- YOUR CUSTOM BOTTOM NAVIGATION BAR -->
+    <!-- YOUR CUSTOM BOTTOM NAVIGATION BAR -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom"
         android:background="#F0F0F0"
-        android:weightSum="4"
-        android:layout_gravity="bottom"> <!-- Position at the bottom -->
+        android:orientation="horizontal"
+        android:weightSum="4">
 
-        <ImageButton
-            android:id="@+id/homebutton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:padding="16dp"
-            android:src="@drawable/homeicon"
-            android:contentDescription="@string/home_button_description" />
+    <ImageButton
+        android:id="@+id/homebutton"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scaleType="centerInside"
+        android:padding="12dp"
+        android:src="@drawable/homeicon"
+        android:background="?attr/selectableItemBackgroundBorderless"/>
 
-        <ImageButton
-            android:id="@+id/messagesbutton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/messagesicon"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:padding="16dp"
-            android:contentDescription="@string/messages_button_description" />
+    <ImageButton
+        android:id="@+id/messagesbutton"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scaleType="centerInside"
+        android:padding="12dp"
+        android:src="@drawable/messagesicon"
+        android:background="?attr/selectableItemBackgroundBorderless"/>
 
-        <ImageButton
-            android:id="@+id/uploadbutton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/uploadicon"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:padding="16dp"
-            android:contentDescription="@string/upload_button_description" />
+    <ImageButton
+        android:id="@+id/uploadbutton"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scaleType="centerInside"
+        android:padding="12dp"
+        android:src="@drawable/uploadicon"
+        android:background="?attr/selectableItemBackgroundBorderless"/>
 
-        <ImageButton
-            android:id="@+id/profilebutton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/profileicon"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:padding="16dp"
-            android:contentDescription="@string/profile_button_description" />
-
-    </LinearLayout>
-
-</android.support.design.widget.CoordinatorLayout>
+    <ImageButton
+        android:id="@+id/profilebutton"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scaleType="centerInside"
+        android:padding="12dp"
+        android:src="@drawable/profileicon"
+        android:background="?attr/selectableItemBackgroundBorderless"/>
+</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

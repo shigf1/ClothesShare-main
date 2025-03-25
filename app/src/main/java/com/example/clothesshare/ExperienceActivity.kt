@@ -19,6 +19,7 @@ class ExperienceActivity : AppCompatActivity() {
         setContentView(binding.root)
         enableEdgeToEdge()
 
+
         ViewCompat.setOnApplyWindowInsetsListener(binding.experience) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -51,17 +52,21 @@ class ExperienceActivity : AppCompatActivity() {
         }
     }
         /*  private fun checkExperience(userAnswer:Boolean){
-
-          if (questionBank.all(it.isAnswered) {
+        
+          IF AT LAST EXPERIENCE, NEXT BUTTON DISSAPEARS AND A PROMPT TO ADD EXPERIENCE TO ITEM APPEARS
+          if (experiences.all(it.isAnswered) {
+                 have images fill with placeholders
+                 add button and text to add experience becomes visible
                  binding.nextButton.visibility.gone
              }
-             if questionBank.currentindex == 1 {
+             PREVIOUS BUTTON INVISIBLE AT START BY DEFUALT, ONCE YOU PASS BECOMES VISIBLE
+             if experiences.currentindex == 1 {
                  binding.previousButton.visibility.visible
              }
-             if questionBank.currentindex == 0 {
+             PREVIOUS BUTTON BECOMES INVISIBLE IF YOU GO BACK TO THE FIRST EXPERIENCE
+             if experiences.currentindex == 0 {
                  binding.previousButton.visibility.invisible
              }
-
 
              }
              */

@@ -6,22 +6,30 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.clothesshare.databinding.ActivityUploadBinding
+import com.example.clothesshare.databinding.ActivityExperienceBinding
 
-class UploadActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityUploadBinding
+class ExperienceActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityExperienceBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityUploadBinding.inflate(layoutInflater)
+        binding = ActivityExperienceBinding.inflate(layoutInflater)
         setContentView(binding.root)
         enableEdgeToEdge()
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.upload) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.experience) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        binding.nextButton.setOnClickListener {
+            // go to next experience
+        }
+        binding.previousButton.setOnClickListener {
+            // go to next experience
+        }
+
 
         // Set click listeners for navigation buttons
         binding.homebutton.setOnClickListener() {
@@ -37,8 +45,7 @@ class UploadActivity : AppCompatActivity() {
         }
 
         binding.uploadbutton.setOnClickListener() {
-            recreate()
-
+            startActivity(Intent(this, UploadActivity::class.java))
         }
     }
 }

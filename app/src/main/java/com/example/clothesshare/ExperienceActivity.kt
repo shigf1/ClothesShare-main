@@ -2,11 +2,13 @@ package com.example.clothesshare
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.clothesshare.databinding.ActivityExperienceBinding
+import com.google.android.material.snackbar.Snackbar
 
 class ExperienceActivity : AppCompatActivity() {
     private lateinit var binding: ActivityExperienceBinding
@@ -48,4 +50,21 @@ class ExperienceActivity : AppCompatActivity() {
             startActivity(Intent(this, UploadActivity::class.java))
         }
     }
+        /*  private fun checkExperience(userAnswer:Boolean){
+
+          if (questionBank.all(it.isAnswered) {
+                 binding.nextButton.visibility.gone
+             }
+             if questionBank.currentindex == 1 {
+                 binding.previousButton.visibility.visible
+             }
+             if questionBank.currentindex == 0 {
+                 binding.previousButton.visibility.invisible
+             }
+
+
+             }
+             */
+
+
 }

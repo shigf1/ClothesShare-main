@@ -32,8 +32,10 @@ class ProfileActivity : AppCompatActivity() {
 
         val data = ArrayList<PostItem>()
 
+        val image = "Placeholder"
+
         for (i in 1..20) {
-            data.add(PostItem(R.drawable.post_mosaic, "Username $i", "Description $i"))
+            data.add(PostItem(image, "Username $i", "Description $i"))
         }
 
         val adapter = PostAdapter(data)

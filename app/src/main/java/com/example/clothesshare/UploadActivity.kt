@@ -26,6 +26,7 @@ import androidx.annotation.Nullable
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.core.widget.doOnTextChanged
 //import kotlinx.android.synthetic.main.activity_upload.postPhoto
 import java.io.File
 import java.util.Date
@@ -33,19 +34,7 @@ import java.util.Date
 class UploadActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUploadBinding
 
-    private val takePhoto = registerForActivityResult(
-        ActivityResultContracts.TakePicture()
-    ) { didTakePhoto: Boolean ->
-        // handle the result
-        if (didTakePhoto && photoName != null) {
-
-        }
-    }
-
-    var pickedPhoto : Uri? = null
-    var pickedBitMap : Bitmap? = null
-
-    private var photoName: String? = null
+    private lateinit var post: PostItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +47,13 @@ class UploadActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        post = PostItem(
+            username = "",
+            description = "",
+            date = Date(),
+            photoUriString = ""
+        )
 
         // Set click listeners for navigation buttons
         binding.homebutton.setOnClickListener() {
@@ -77,12 +73,16 @@ class UploadActivity : AppCompatActivity() {
             recreate()
         }
 
+        // setting ImageView postPhoto to have the image the user selected
         val singlePhotoPickerLauncher =
             registerForActivityResult(ActivityResultContracts.PickVisualMedia()){ uri ->
                 binding.postPhoto.setImageURI(uri)
+                post = post.copy(photoUriString = uri.toString())
+
             }
 
         binding.uploadPicture.setOnClickListener() {
+            // launch singlePhotoPickerLauncher after user selects image
             singlePhotoPickerLauncher.launch(
                 PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
             )
@@ -96,64 +96,18 @@ class UploadActivity : AppCompatActivity() {
                 //)
 
                 //takePhoto.launch(photoUri)
-
         }
 
-        //val captureImageIntent = takePhoto.contract.createIntent(
-        //    applicationContext,
-        //    Uri.parse("")
-        //)
-        //binding.uploadPicture.isEnabled = canResolveIntent(captureImageIntent)
+        // change post description when the textview is edited by user
+        binding.postUploadDescription.doOnTextChanged { text, _, _, _ ->
+            post = post.copy(description = text.toString())
+        }
+
+        // change the date displayed on the button to the post's date
+        binding.postDate.apply {
+            text = post.date.toString()
+            isEnabled = false
+        }
     }
-
-    //fun pickedPhoto (view: View) {
-    //    if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE)
-    //        != PackageManager.PERMISSION_GRANTED) {
-    //        ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
-    //            1)
-    //    } else {
-    //        val galleryIntext = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-    //        startActivityForResult(galleryIntext, 2)
-    //    }
-   //}
-
-    //override fun onRequestPermissionsResult(
-    //    requestCode: Int,
-    //    permissions: Array<out String>,
-    //    grantResults: IntArray
-    //) {
-    //    if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-    //        val galleryIntext = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-    //        startActivityForResult(galleryIntext, 2)
-    //    }
-    //    super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    //}
-
-    //override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    //    if (requestCode == 2 && resultCode == Activity.RESULT_OK && data != null){
-    //        pickedPhoto = data.data
-    //        if (Build.VERSION.SDK_INT >= 28) {
-    //            val source = ImageDecoder.createSource(this.contentResolver, pickedPhoto!!)
-    //            pickedBitMap = ImageDecoder.decodeBitmap(source)
-                //postPhoto.setImageBitmap(pickedBitMap)
-    //            binding.postPhoto.setImageBitmap(pickedBitMap)
-    //        } else {
-    //            pickedBitMap = MediaStore.Images.Media.getBitmap(this.contentResolver, pickedPhoto!!)
-    //            //postPhoto.setImageBitmap(pickedBitMap)
-    //            binding.postPhoto.setImageBitmap(pickedBitMap)
-    //        }
-    //    }
-    //   super.onActivityResult(requestCode, resultCode, data)
-    //}
-    
-    //private fun canResolveIntent(intent: Intent): Boolean {
-    //    val packageManager: PackageManager = application.packageManager
-    //    val resolvedActivity: ResolveInfo? =
-    //        packageManager.resolveActivity(
-    //            intent,
-    //            PackageManager.MATCH_DEFAULT_ONLY
-    //        )
-    //    return resolvedActivity != null
-    //}
 
 }

@@ -1,8 +1,11 @@
 package com.example.clothesshare
 
+import android.net.Uri
+import java.util.Date
+
 data class PostItem(
     val username: String,
-    val image: Int,
     val description: String,
-    val photoFileName: String? = null
+    val date: Date,
+    val photoUriString: String
 )

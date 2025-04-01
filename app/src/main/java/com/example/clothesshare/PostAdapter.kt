@@ -1,5 +1,6 @@
 package com.example.clothesshare
 
+import android.net.Uri
 import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +24,8 @@ RecyclerView.Adapter<PostAdapter.ViewHolder>(){
 
         val post = posts[position]
 
-        holder.ivPostImage.setImageResource(post.image)
+        holder.ivPostImage.setImageURI(Uri.parse(post.photoUriString))
+        //holder.ivPostImage.setImageResource(post.image)
 
         holder.tvUsername.text = post.username
 

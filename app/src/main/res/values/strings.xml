@@ -4,4 +4,7 @@
     <string name="messages_button_description">Messages</string>
     <string name="profile_button_description">Profile</string>
     <string name="upload_button_description">Upload</string>
+    <string name="post_description_hint">Enter description for your post.</string>
+    <string name="post_description_label">Description</string>
+    <string name="upload_post_label">Upload Post</string>
 </resources>

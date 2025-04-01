@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clothesshare.databinding.ActivityProfileBinding
+import java.util.Date
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
@@ -31,8 +32,9 @@ class ProfileActivity : AppCompatActivity() {
 
         val data = ArrayList<PostItem>()
 
+        // create 20 dummy posts for profile screen
         for (i in 1..20) {
-            data.add(PostItem("Username $i", R.drawable.post_mosaic, "Description $i"))
+            data.add(PostItem("Username $i", "Description $i", Date(), "PhotoUri $i"))
         }
 
         val adapter = PostAdapter(data)

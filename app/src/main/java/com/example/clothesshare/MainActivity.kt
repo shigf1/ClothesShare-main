@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clothesshare.databinding.ActivityMainBinding
+import java.util.Date
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         val data = ArrayList<PostItem>()
 
         for (i in 1..20) {
-            data.add(PostItem("Username $i",R.drawable.post_mosaic, "Description $i"))
+            data.add(PostItem("Username $i", "Description $i", Date(), "PhotoUri $i"))
         }
 
         val adapter = PostAdapter(data)

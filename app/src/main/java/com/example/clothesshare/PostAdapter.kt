@@ -14,7 +14,7 @@ RecyclerView.Adapter<PostAdapter.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
             ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.cv_post_list_design, parent, false)
+            .inflate(R.layout.cv_post_design, parent, false)
 
         return ViewHolder(view)
     }
@@ -33,8 +33,8 @@ RecyclerView.Adapter<PostAdapter.ViewHolder>(){
     override fun getItemCount() = posts.size
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val ivPostImage: ImageView = itemView.findViewById(R.id.post_image)
-        val tvUsername: TextView = itemView.findViewById(R.id.username)
-        val tvDescription: TextView = itemView.findViewById(R.id.post_description)
+        val ivPostImage: ImageView = itemView.findViewById(R.id.iv_post)
+        val tvUsername: TextView = itemView.findViewById(R.id.post_username)
+        val tvDescription: TextView = itemView.findViewById(R.id.tv_post)
     }
 }

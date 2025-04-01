@@ -13,6 +13,7 @@
         android:padding="8dp">
 
         <TextView
+            android:id="@+id/post_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Username"
@@ -27,9 +28,13 @@
             android:id="@+id/iv_post"
             android:layout_width="338dp"
             android:layout_height="389dp"
+            android:src="@drawable/post_mosaic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="35dp" />
+            tools:layout_editor_absoluteY="35dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="TODO"/>
 
         <TextView
             android:id="@+id/tv_post"
@@ -45,7 +50,7 @@
 
         <Button
             android:layout_width="55dp"
-            android:layout_height="40dp"
+            android:layout_height="48dp"
             android:text=">"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

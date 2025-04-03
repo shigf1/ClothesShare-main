@@ -32,7 +32,6 @@
                     android:id= "@+id/profile_cover"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
-                    android:contentDescription="profile information, color code: #FF001D9A"
                     android:minHeight="175dp"
                     android:paddingBottom = "75dp"
                     android:scaleType ="fitXY"

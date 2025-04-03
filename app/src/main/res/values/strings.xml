@@ -7,4 +7,10 @@
     <string name="username">Username\n</string>
     <string name="item_description">Item Description\n</string>
     <string name="arrow"><![CDATA[>]]></string>
+    <string name="post_description_hint">Enter description for your post.</string>
+    <string name="post_description_label">Description</string>
+    <string name="upload_post_label">Upload Post</string>
+    <string name="post_story_hint">Enter story for your post.\n</string>
+    <string name="post_story_label">Story</string>
+    <string name="upload">Upload</string>
 </resources>

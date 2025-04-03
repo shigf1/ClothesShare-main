@@ -2,11 +2,13 @@ package com.example.clothesshare
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 import com.example.clothesshare.databinding.ActivityExperienceBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -18,7 +20,12 @@ class ExperienceActivity : AppCompatActivity() {
         binding = ActivityExperienceBinding.inflate(layoutInflater)
         setContentView(binding.root)
         enableEdgeToEdge()
-
+        val postId = intent.getStringExtra("POST_ID") ?: ""
+        val username = intent.getStringExtra("USERNAME") ?: ""
+        val image = intent.getStringExtra("IMAGE") ?: ""
+        val description = intent.getStringExtra("DESCRIPTION") ?: ""
+        //val story = intent.getStringExtra("STORY") ?: ""
+        displayPost(username, image, description)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.experience) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -50,6 +57,16 @@ class ExperienceActivity : AppCompatActivity() {
         binding.uploadbutton.setOnClickListener() {
             startActivity(Intent(this, UploadActivity::class.java))
         }
+    }
+
+    private fun displayPost(username: String, description: String, image: String) {
+        // Implement your UI updates here
+        // Example:
+        findViewById<TextView>(R.id.experienceDescriptionHeader).text = username
+        findViewById<TextView>(R.id.experienceDescriptionTextView).text = image
+        Glide.with(this)
+            .load(description)
+            .into(findViewById(R.id.photo2))
     }
         /*  private fun checkExperience(userAnswer:Boolean){
         

@@ -9,7 +9,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clothesshare.databinding.ActivityProfileBinding
-import de.hdodenhof.circleimageview.CircleImageView;
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
@@ -38,7 +37,13 @@ class ProfileActivity : AppCompatActivity() {
             data.add(PostItem(image, "Username $i", "Description $i"))
         }
 
-        val adapter = PostAdapter(data)
+        val adapter = PostAdapter(data){ clickedPost ->
+            // Launch ExperienceActivity with the clicked post's ID
+            val intent = Intent(this, ExperienceActivity::class.java).apply {
+                putExtra("POST_ID", clickedPost.postId)
+            }
+            startActivity(intent)
+        }
 
         recyclerview.adapter = adapter
 

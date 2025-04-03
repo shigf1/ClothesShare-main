@@ -30,7 +30,6 @@
             android:id="@+id/ivPost"
             android:layout_width="363dp"
             android:layout_height="400dp"
-            android:src="@drawable/post_mosaic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cvUsername" />

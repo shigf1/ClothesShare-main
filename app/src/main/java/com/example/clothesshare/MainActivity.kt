@@ -47,7 +47,18 @@ class MainActivity : AppCompatActivity() {
 
         getUserdata()
 
-        postRecyclerview.adapter = PostAdapter(postArrayList)
+        postRecyclerview.adapter = PostAdapter(postArrayList) { clickedPost ->
+            // Launch ExperienceActivity with the clicked post's ID
+            val intent = Intent(this, ExperienceActivity::class.java).apply {
+                putExtra("POST_ID", clickedPost.postId)
+                putExtra("USERNAME", clickedPost.username)
+                putExtra("IMAGE", clickedPost.image)
+                putExtra("DESCRIPTION", clickedPost.description)
+                //putExtra("STORY", clickedPost.story)
+
+            }
+            startActivity(intent)
+        }
 
         // Set click listeners for navigation buttons
         binding.homebutton.setOnClickListener() {

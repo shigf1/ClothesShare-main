@@ -138,7 +138,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/experienceprevious"
             android:scaleType="centerCrop"
-            android:contentDescription="@string/home_button_description" />
+            android:contentDescription="Previous Experience" />
 
         <ImageButton
             android:id="@+id/requestButton"
@@ -147,7 +147,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/requestimg"
             android:scaleType="centerCrop"
-            android:contentDescription="@string/home_button_description" />
+            android:contentDescription="Request for new experience" />
 
 
         <!-- Next Button -->
@@ -159,7 +159,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/experiencenext"
             android:scaleType="centerCrop"
-            android:contentDescription="@string/home_button_description" />
+            android:contentDescription="Next Experience" />
     </LinearLayout>
 
     <!-- Bottom Navigation Bar -->

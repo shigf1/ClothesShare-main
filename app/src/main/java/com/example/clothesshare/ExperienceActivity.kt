@@ -26,6 +26,9 @@ class ExperienceActivity : AppCompatActivity() {
             insets
         }
 
+
+
+
         binding.nextButton.setOnClickListener {
             // go to next experience
         }

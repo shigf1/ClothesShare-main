@@ -1,6 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- res/values/colors.xml -->
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="primary">#FF001D9A</color>
+    <!-- Backgrounds & Surfaces -->
+    <color name="background">#FFFFFF</color>
+    <color name="surface">#F9F9F9</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#0F0F0F</color>  <!-- Almost black -->
+    <color name="text_secondary">#6B6B6B</color>  <!-- Medium gray -->
+    <color name="text_tertiary">#AAAAAA</color>  <!-- Light gray -->
+
+    <!-- Accent Colors (Threads uses black/dark gray as primary) -->
+    <color name="primary">#0F0F0F</color>  <!-- Primary black -->
+    <color name="primary_light">#3A3A3A</color>
+    <color name="highlight">#E3E3E3</color>  <!-- Pressed state -->
+
+    <!-- Borders/Dividers -->
+    <color name="border">#E5E5E5</color>
+
+    <!-- Icons -->
+    <color name="icon_active">#0F0F0F</color>
+    <color name="icon_inactive">#9A9A9A</color>
+
+    <!-- Bottom Navigation -->
+    <color name="bottom_nav_background">#FFFFFF</color>
 </resources>

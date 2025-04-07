@@ -96,44 +96,16 @@
         android:orientation="horizontal"
         android:weightSum="4">
 
-    <ImageButton
-        android:id="@+id/homebutton"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:scaleType="centerInside"
-        android:padding="12dp"
-        android:src="@drawable/homeicon"
-        android:background="?attr/selectableItemBackgroundBorderless"/>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        app:elevation="8dp"
+        app:itemIconTint="@color/bottom_nav_colors"
+        app:itemTextColor="@color/bottom_nav_colors"
+        app:menu="@menu/bottom_nav_menu"/>
+    </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/messagesbutton"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:scaleType="centerInside"
-        android:padding="12dp"
-        android:src="@drawable/messagesicon"
-        android:background="?attr/selectableItemBackgroundBorderless"/>
-
-    <ImageButton
-        android:id="@+id/uploadbutton"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:scaleType="centerInside"
-        android:padding="12dp"
-        android:src="@drawable/uploadicon"
-        android:background="?attr/selectableItemBackgroundBorderless"/>
-
-    <ImageButton
-        android:id="@+id/profilebutton"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:scaleType="centerInside"
-        android:padding="12dp"
-        android:src="@drawable/profileicon"
-        android:background="?attr/selectableItemBackgroundBorderless"/>
-</LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

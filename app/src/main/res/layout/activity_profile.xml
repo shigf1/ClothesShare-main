@@ -5,79 +5,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/profile"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fitsSystemWindows="true">
 
-    <!-- AppBarLayout with CollapsingToolbar -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_height="200dp"
+        android:background="@android:color/transparent"
+        android:elevation="0dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:titleEnabled="false">
 
-            <!-- Your header content -->
-            <FrameLayout
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="185dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_profile_gradient"
+                app:layout_collapseMode="parallax"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_gravity="bottom"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginBottom="25dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="8dp"
+                app:cardBackgroundColor="@color/surface"
                 app:layout_collapseMode="parallax">
 
-                <!-- Your existing header views (profile_cover, profile_image, etc.) -->
-                <!-- ... -->
-
-                <ImageView
-                    android:id= "@+id/profile_cover"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:minHeight="175dp"
-                    android:paddingBottom = "75dp"
-                    android:scaleType ="fitXY"
-                    android:src="@drawable/profileinfobg"
-                    android:transitionName="shared"
-                    app:layout_collapseMode = "parallax" />
+                    android:layout_height="match_parent"
+                    android:paddingTop="80dp"
+                    android:paddingBottom="24dp">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profile_image"
-                    android:layout_width="175dp"
-                    android:layout_height="175dp"
-                    android:layout_gravity="bottom|center"
-                    android:elevation="2dp"
-                    android:paddingBottom="10dp"
-                    android:src="@drawable/profileuser"
-                    android:scaleType ="fitXY"
-                    android:transitionName="shared"
-                    app:civ_border_color="#000"
-                    app:civ_border_width="1dp"
-                    app:layout_collapseMode="parallax" />
+                    <ImageView
+                        android:id="@+id/profile_image"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentTop="true"
+                        android:elevation="12dp"
+                        android:src="@drawable/profileuser"
+                       />
 
-                <Button
-                    android:id="@+id/profile_option_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:layout_gravity="bottom|end"
-                    android:layout_marginBottom = "20dp"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/settings"
-                    android:gravity="center"
-                    android:elevation="4dp"
-                    android:paddingEnd="5dp"
-                    android:paddingStart="5dp"
-                    app:layout_collapseMode="parallax"/>
+                    <TextView
+                        android:id="@+id/profile_name"
+                        android:layout_below="@id/profile_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="username"
+                        android:textColor="@color/text_primary"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
 
-            </FrameLayout>
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/settings_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:src="@drawable/settings"
+                        app:borderWidth="0dp"
+                        app:elevation="8dp"
+                        app:fabSize="mini"
+                        app:tint="@color/text_primary"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
                 app:layout_collapseMode="pin"/>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
@@ -86,26 +99,16 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:listitem="@layout/cv_post_list_design"/>
 
-    <!-- YOUR CUSTOM BOTTOM NAVIGATION BAR -->
-    <!-- YOUR CUSTOM BOTTOM NAVIGATION BAR -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_gravity="bottom"
-        android:background="#F0F0F0"
-        android:orientation="horizontal"
-        android:weightSum="4">
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@android:color/white"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom"
+        android:background="@color/surface"
         app:elevation="8dp"
         app:itemIconTint="@color/bottom_nav_colors"
         app:itemTextColor="@color/bottom_nav_colors"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu"/>
-    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

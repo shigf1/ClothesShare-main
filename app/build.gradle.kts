@@ -59,4 +59,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("com.android.support:design:28.0.0")// Use the latest version
+    implementation ("com.robinhood.ticker:ticker:2.0.4")// Animated number ticker
+    implementation ("androidx.cardview:cardview:1.0.0") // CardView
 }

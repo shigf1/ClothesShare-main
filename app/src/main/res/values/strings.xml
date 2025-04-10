@@ -13,4 +13,6 @@
     <string name="post_story_hint">Enter story for your post.\n</string>
     <string name="post_story_label">Story</string>
     <string name="upload">Upload</string>
+    <string name="messages_label">Messages</string>
+    <string name="recent_message_label">This displays the most recent message sent.</string>
 </resources>

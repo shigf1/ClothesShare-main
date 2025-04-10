@@ -1,5 +1,6 @@
 package com.example.clothesshare
 
+/* Data Class for post information */
 data class PostItem(
     val image: String ?= null,
     val username: String ?= null,

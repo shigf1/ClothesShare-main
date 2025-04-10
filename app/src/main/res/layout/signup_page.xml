@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/signup_page"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50sp"
+        android:text="Clothes Share"
+        android:textAppearance="?attr/textAppearanceHeadline5"
+        android:textStyle="bold|italic"
+        android:textSize="35sp"
+        android:layout_gravity="center"/>
+
+    <ImageView
+        android:id="@+id/app_icon_picture"
+        android:layout_width="150sp"
+        android:layout_height="150sp"
+        android:src="@drawable/post_mosaic"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Account Email"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="60sp"
+        android:layout_marginStart="57sp"/>
+
+    <EditText
+        android:layout_width="300sp"
+        android:layout_height="48dp"
+        android:text="Enter email here."
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10sp"
+        android:layout_marginStart="57sp"/>
+
+    <EditText
+        android:layout_width="300sp"
+        android:layout_height="48dp"
+        android:text="Enter username."
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10sp"
+        android:layout_marginStart="57sp"/>
+
+    <EditText
+        android:layout_width="300sp"
+        android:layout_height="48dp"
+        android:text="Enter password here."
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm Password"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10sp"
+        android:layout_marginStart="57sp"/>
+
+    <EditText
+        android:layout_width="300sp"
+        android:layout_height="48dp"
+        android:text="Re-enter password here."
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/signup_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign-Up"
+        android:layout_marginTop="5sp"
+        android:layout_gravity="center"
+        app:cornerRadius="0dp"/>
+
+    <TextView
+        android:id="@+id/signup_button_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:text="Already a user? Login"
+        android:clickable="true"
+        android:onClick="clickHandler"
+        android:layout_gravity="end"
+        android:layout_marginEnd="20sp"
+        android:layout_marginTop="10sp"/>
+
+</LinearLayout>

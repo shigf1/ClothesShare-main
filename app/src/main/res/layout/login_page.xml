@@ -9,17 +9,22 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50sp"
+        android:layout_marginTop="10dp"
         android:text="Clothes Share"
         android:textAppearance="?attr/textAppearanceHeadline5"
-        android:textStyle="bold|italic"
+        android:textStyle="italic"
+        android:textColor="@color/darker_grey"
         android:textSize="35sp"
-        android:layout_gravity="center"/>
+        android:layout_marginStart="10dp"/>
 
-    <ImageView
-        android:layout_width="150sp"
-        android:layout_height="150sp"
-        android:src="@drawable/post_mosaic"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textAppearance="?attr/textAppearanceHeadline5"
+        android:textStyle="bold"
+        android:textSize="35sp"
+        android:layout_marginTop="100dp"
         android:layout_gravity="center"/>
 
     <TextView
@@ -29,11 +34,11 @@
         android:textStyle="bold"
         android:textSize="20sp"
         android:textColor="@color/black"
-        android:layout_marginTop="100sp"
-        android:layout_marginStart="57sp"/>
+        android:layout_marginTop="70dp"
+        android:layout_marginStart="56dp"/>
 
     <EditText
-        android:layout_width="300sp"
+        android:layout_width="300dp"
         android:layout_height="48dp"
         android:text="Enter email here."
         android:layout_gravity="center"/>
@@ -45,11 +50,11 @@
         android:textStyle="bold"
         android:textSize="20sp"
         android:textColor="@color/black"
-        android:layout_marginTop="20sp"
-        android:layout_marginStart="57sp"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="56dp"/>
 
     <EditText
-        android:layout_width="300sp"
+        android:layout_width="300dp"
         android:layout_height="48dp"
         android:text="Enter password here."
         android:layout_gravity="center"/>
@@ -59,20 +64,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:layout_marginTop="50sp"
+        android:textSize="20sp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="50dp"
         android:layout_gravity="center"
         app:cornerRadius="0dp"/>
 
-    <TextView
-        android:id="@+id/login_button_page"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="true"
-        android:text="Not a user yet? Sign-Up"
-        android:clickable="true"
-        android:onClick="clickHandler"
-        android:layout_gravity="end"
-        android:layout_marginEnd="20sp"
-        android:layout_marginTop="85sp"/>
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="145dp">
+
+        <TextView
+            android:id="@+id/forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|bottom"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="110dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="clickHandler"
+            android:text="Forgot Password?"/>
+
+        <TextView
+            android:id="@+id/login_button_page"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:text="Not a user yet? Sign-Up"
+            android:clickable="true"
+            android:onClick="clickHandler"
+            android:layout_gravity="end"/>
+
+    </LinearLayout>
 
 </LinearLayout>

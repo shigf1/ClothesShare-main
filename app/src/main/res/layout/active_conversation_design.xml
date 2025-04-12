@@ -36,15 +36,21 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/profile_picture" />
 
-        <Button
+        <TextView
             android:id="@+id/recent_message_date"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:textSize="12sp"
-            app:cornerRadius="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@color/light_grey"
+            android:textColor="@color/darker_grey"
+            android:textSize="13sp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
             app:layout_constraintBottom_toTopOf="@+id/recent_message"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.741"
             app:layout_constraintStart_toEndOf="@+id/username"
             tools:text="Tue Apr 8 11:11 EST 2025" />
 

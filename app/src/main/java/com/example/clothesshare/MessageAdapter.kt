@@ -36,6 +36,8 @@ class MessageAdapter(private val messages: List<MessageItem>) :
         // set the most_recent_message to the most_recent_message tied to the message
         holder.recentMessage.text = message.most_recent_message
 
+        holder.recentMessageDate.text = message.most_recent_message_date
+
 
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(message)
@@ -50,6 +52,7 @@ class MessageAdapter(private val messages: List<MessageItem>) :
         val profilePicture: ImageView = itemView.findViewById(R.id.profile_picture)
         val username: TextView = itemView.findViewById(R.id.username)
         val recentMessage: TextView = itemView.findViewById(R.id.recent_message)
+        val recentMessageDate: TextView = itemView.findViewById(R.id.recent_message_date)
     }
 
 }

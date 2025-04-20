@@ -197,7 +197,7 @@
                     android:id="@+id/locationIcon"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_location"
+                    android:src="@drawable/location"
                     app:tint="@color/text_secondary"/>
 
                 <TextView
@@ -273,8 +273,6 @@
         android:layout_alignParentBottom="true"
         android:background="@color/surface"
         app:elevation="8dp"
-        app:itemIconTint="@color/bottom_nav_colors"
-        app:itemTextColor="@color/bottom_nav_colors"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu"/>
 </RelativeLayout>

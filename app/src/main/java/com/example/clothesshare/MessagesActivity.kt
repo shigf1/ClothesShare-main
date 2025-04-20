@@ -9,7 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clothesshare.databinding.ActivityMessagesBinding
-import java.util.Date
+import com.example.clothesshare.ui.ConversationActivity
 
 class MessagesActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMessagesBinding
@@ -26,25 +26,25 @@ class MessagesActivity : AppCompatActivity() {
             insets
         }
 
-        val recyclerview: RecyclerView = findViewById(R.id.messages_recyclerview)
-
+        val recyclerview = binding.messagesRecyclerview // Use view binding
         recyclerview.layoutManager = LinearLayoutManager(this)
 
         val data = ArrayList<MessageItem>()
-
-        val image = "Placeholder"
-
         for (i in 1..20) {
-            data.add(MessageItem(image, "Username $i", "Most recent message sent $i"))
+            data.add(MessageItem(
+                profile_pic = "Placeholder",
+                username = "Username $i",
+                most_recent_message = "Most recent message sent $i",
+                most_recent_message_date = "Today" // Add date field
+            ))
         }
 
         val adapter = MessageAdapter(data)
-
         recyclerview.adapter = adapter
 
-        adapter.onItemClick = {
-            val intent = Intent(this, ConversationActivity::class.java).apply {
-                putExtra("username", it)
+        adapter.onItemClick = { messageItem ->
+            val intent = Intent(this, com.example.clothesshare.ui.ConversationActivity::class.java).apply {
+                putExtra("username", messageItem.username)
             }
             startActivity(intent)
         }

@@ -29,7 +29,7 @@ class ConversationAdapter(private val messages: List<ConversationItem>) :
 
         holder.message.text = message.message
 
-        holder.messageDate.text = message.message_date
+        holder.messageDate.text = message.message_date.toString()
 
         val layoutParams = holder.cardView.layoutParams as ViewGroup.MarginLayoutParams
 

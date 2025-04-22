@@ -265,14 +265,59 @@
             app:cornerRadius="24dp"/>
     </LinearLayout>
 
-    <!-- Bottom Navigation -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavBar"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/surface"
-        app:elevation="8dp"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_nav_menu"/>
-</RelativeLayout>
+        android:id="@+id/bottomNavBar"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#F0F0F0"
+        android:weightSum="4">
+
+
+        <ImageButton
+            android:id="@+id/homebutton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="16dp"
+            android:src="@drawable/homeicon"
+            android:contentDescription="@string/home_button_description">
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/messagesbutton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/messagesicon"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="16dp"
+            android:contentDescription="@string/messages_button_description">
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/uploadbutton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/uploadicon"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="16dp"
+            android:contentDescription="@string/upload_button_description">
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/profilebutton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/profileicon"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="16dp"
+            android:contentDescription="@string/profile_button_description">
+        </ImageButton>
+
+
+        </LinearLayout>
+    </RelativeLayout>

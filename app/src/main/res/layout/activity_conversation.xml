@@ -1,33 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
-
+    <!-- Messages List -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/conversationRecyclerView"
-        android:layout_width="200dp"
-        android:layout_height="500dp"
-        tools:listitem="@layout/active_conversation_design"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <Button
-        android:layout_width="10dp"
-        android:layout_height="10dp"
-        android:id="@+id/sendbutton"></Button>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_message_recieved"
+        android:layout_above="@+id/message_input_container"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 
-    <EditText
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/messageinput"
-        ></EditText>
 
+    <!-- Message Input Container -->
+    <LinearLayout
+        android:id="@+id/message_input_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="#F5F5F5">
 
-</LinearLayout>
+        <!-- Message Input -->
+        <EditText
+            android:id="@+id/message_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Type a message..."
+            android:padding="12dp"
+            android:maxLines="4"/>
+
+        <!-- Send Button -->
+        <ImageButton
+            android:id="@+id/send_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_send"
+            android:contentDescription="Send message"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

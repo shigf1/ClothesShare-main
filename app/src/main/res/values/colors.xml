@@ -4,6 +4,13 @@
     <color name="background">#FFFFFF</color>
     <color name="surface">#F9F9F9</color>
 
+    <color name="black">#FF000000</color>
+    <color name="darker_grey">#757575</color>
+    <color name="light_grey">#EEEEEE</color>
+
+    <color name="white">#FFFFFFFF</color>
+    <color name="grey">#9E9E9E</color>
+
     <!-- Text Colors -->
     <color name="text_primary">#0F0F0F</color>  <!-- Almost black -->
     <color name="text_secondary">#6B6B6B</color>  <!-- Medium gray -->

@@ -73,8 +73,8 @@ class ConversationActivity : AppCompatActivity() {
     }
 
     private fun setupSendButton() {
-        binding.sendbutton.setOnClickListener {
-            val messageText = binding.messageinput.text.toString().trim()
+        binding.sendButton.setOnClickListener {
+            val messageText = binding.messageInput.text.toString().trim()
             if (messageText.isNotEmpty()) {
                 sendMessage(messageText)
             }
@@ -96,7 +96,7 @@ class ConversationActivity : AppCompatActivity() {
             .push()
             .setValue(conversationItem)
             .addOnSuccessListener {
-                binding.messageinput.text.clear()
+                binding.messageInput.text.clear()
             }
             .addOnFailureListener {
                 // Handle error

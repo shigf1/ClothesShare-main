@@ -62,11 +62,11 @@ class ExperienceActivity : AppCompatActivity() {
     private fun displayPost(username: String, description: String, image: String) {
         // Implement your UI updates here
         // Example:
-        findViewById<TextView>(R.id.experienceDescriptionHeader).text = username
+        findViewById<TextView>(R.id.username).text = username
         findViewById<TextView>(R.id.experienceDescriptionTextView).text = image
         Glide.with(this)
             .load(description)
-            .into(findViewById(R.id.photo2))
+            .into(findViewById(R.id.featuredPhoto))
     }
         /*  private fun checkExperience(userAnswer:Boolean){
         

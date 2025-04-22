@@ -39,10 +39,9 @@ class MessagesActivity : AppCompatActivity() {
             ))
         }
 
-        val adapter = MessageAdapter(data)
-        recyclerview.adapter = adapter
-
-        adapter.onItemClick = { messageItem ->
+        //val adapter = MessageAdapter(data)
+        recyclerview.adapter = MessageAdapter(data) { messageItem ->
+            // Launch ExperienceActivity with the clicked post's ID
             val intent = Intent(this, ConversationActivity::class.java).apply {
                 // Always provide at least a mock conversation ID
                 putExtra("conversation_id", messageItem.conversationId ?: "mock_conv_${System.currentTimeMillis()}")
@@ -50,6 +49,8 @@ class MessagesActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
+
+
 
         // Set click listeners for navigation buttons
         binding.homebutton.setOnClickListener() {

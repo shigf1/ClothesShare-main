@@ -41,7 +41,8 @@ class ConversationActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        conversationRecyclerView = findViewById(R.id.material_card_view)
+        conversationRecyclerView = binding.conversationRecyclerView // Make sure this matches your XML
+
         conversationRecyclerView.layoutManager = LinearLayoutManager(this)
         conversationRecyclerView.setHasFixedSize(true)
 
@@ -52,10 +53,61 @@ class ConversationActivity : AppCompatActivity() {
 
     private fun loadSampleData() {
         conversationList.add(ConversationItem(
+            username= "Test User",
+            message = "This is a sample message",
+            message_date = SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault()).format(Date()),
+            isCurrentUser = false
+        )
+        )
+        conversationList.add(ConversationItem(
             username = "Test User",
             message = "This is a sample message",
-            message_date = SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault()).format(Date())
-        ))
+            message_date = SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault()).format(Date()),
+            isCurrentUser = true
+        )
+        )
+        conversationList.add(ConversationItem(
+            username = "Test User",
+            message = "This is a sample message",
+            message_date = SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault()).format(Date()),
+            isCurrentUser = false
+        )
+        )
+        conversationList.add(ConversationItem(
+            username = "Test User",
+            message = "This is a sample message",
+            message_date = SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault()).format(Date()),
+            isCurrentUser = false
+        )
+        )
+        conversationList.add(ConversationItem(
+            username = "Test User",
+            message = "This is a sample message",
+            message_date = SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault()).format(Date()),
+            isCurrentUser = true
+        )
+        )
+        conversationList.add(ConversationItem(
+            username = "Test User",
+            message = "This is a sample message",
+            message_date = SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault()).format(Date()),
+            isCurrentUser = false
+        )
+        )
+        conversationList.add(ConversationItem(
+            username = "Test User",
+            message = "This is a sample message",
+            message_date = SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault()).format(Date()),
+            isCurrentUser = true
+        )
+        )
+        conversationList.add(ConversationItem(
+            username = "Test User",
+            message = "This is a sample message",
+            message_date = SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault()).format(Date()),
+            isCurrentUser = true
+        )
+        )
         adapter.notifyDataSetChanged()
     }
 
@@ -63,17 +115,22 @@ class ConversationActivity : AppCompatActivity() {
         FirebaseDatabase.getInstance().getReference("chats/$conversationId")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    conversationList.clear()
+                    val messages = mutableListOf<ConversationItem>()
+                    val currentUserId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
 
-                    if (snapshot.exists()) {
-                        for (itemSnapshot in snapshot.children) {
-                            val conversationItem = itemSnapshot.getValue(ConversationItem::class.java)
-                            conversationItem?.let {
-                                conversationList.add(it)
-                            }
+                    for (itemSnapshot in snapshot.children) {
+                        val message = itemSnapshot.getValue(ConversationItem::class.java)?.copy()
+                        message?.let {
+                            // Create a new copy with isCurrentUser set
+                            messages.add(it.copy(isCurrentUser = it.username == currentUserId))
                         }
+                    }
+
+                    (binding.conversationRecyclerView.adapter as? ConversationAdapter)?.let { adapter ->
+                        adapter.messages.clear()
+                        adapter.messages.addAll(messages)
                         adapter.notifyDataSetChanged()
-                        binding.conversationRecyclerView.smoothScrollToPosition(conversationList.size - 1)
+                        binding.conversationRecyclerView.smoothScrollToPosition(adapter.messages.size - 1)
                     }
                 }
 
@@ -93,24 +150,23 @@ class ConversationActivity : AppCompatActivity() {
     }
 
     private fun sendMessage(message: String) {
-        // Create properly formatted date string
-        val dateFormat = SimpleDateFormat("EEE MMM d HH:mm zzz yyyy", Locale.getDefault())
-        val formattedDate = dateFormat.format(Date(System.currentTimeMillis()))
-
+        val currentUserId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
         val conversationItem = ConversationItem(
-            username = FirebaseAuth.getInstance().currentUser?.displayName ?: "You",
+            username = currentUserId,
             message = message,
-            message_date = formattedDate  // Now matches XML format
+            message_date = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date()),
+            isCurrentUser = true
         )
 
+        // Add to adapter
+        (binding.conversationRecyclerView.adapter as? ConversationAdapter)?.addMessage(conversationItem)
+        binding.conversationRecyclerView.smoothScrollToPosition(
+            (binding.conversationRecyclerView.adapter?.itemCount ?: 1) - 1
+        )
+
+        // Send to Firebase
         FirebaseDatabase.getInstance().getReference("chats/$conversationId")
             .push()
             .setValue(conversationItem)
-            .addOnSuccessListener {
-                binding.messageInput.text.clear()
-            }
-            .addOnFailureListener {
-                // Handle error
-            }
     }
 }

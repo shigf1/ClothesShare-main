@@ -9,10 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class MessageAdapter(private val messages: List<MessageItem>) :
+class MessageAdapter(private val messages: List<MessageItem>, private val onItemClick: (MessageItem) -> Unit) :
     RecyclerView.Adapter<MessageAdapter.ViewHolder>(){
-
-        var onItemClick : ((MessageItem) -> Unit)? = null
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
                 ViewHolder {
@@ -41,7 +39,7 @@ class MessageAdapter(private val messages: List<MessageItem>) :
 
 
         holder.itemView.setOnClickListener {
-            onItemClick?.invoke(message)
+            onItemClick(message)
         }
     }
 

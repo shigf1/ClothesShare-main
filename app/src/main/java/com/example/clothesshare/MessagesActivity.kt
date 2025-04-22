@@ -43,8 +43,10 @@ class MessagesActivity : AppCompatActivity() {
         recyclerview.adapter = adapter
 
         adapter.onItemClick = { messageItem ->
-            val intent = Intent(this, com.example.clothesshare.ui.ConversationActivity::class.java).apply {
-                putExtra("username", messageItem.username)
+            val intent = Intent(this, ConversationActivity::class.java).apply {
+                // Always provide at least a mock conversation ID
+                putExtra("conversation_id", messageItem.conversationId ?: "mock_conv_${System.currentTimeMillis()}")
+                putExtra("username", messageItem.username ?: "Test User")
             }
             startActivity(intent)
         }

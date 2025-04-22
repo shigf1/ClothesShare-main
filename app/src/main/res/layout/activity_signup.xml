@@ -39,9 +39,10 @@
         android:layout_marginStart="57dp"/>
 
     <EditText
+        android:id="@+id/ETemail"
         android:layout_width="300dp"
         android:layout_height="48dp"
-        android:text="Enter email here."
+        android:hint="Enter email here."
         android:layout_gravity="center"/>
 
     <TextView
@@ -55,9 +56,10 @@
         android:layout_marginStart="57dp"/>
 
     <EditText
+        android:id="@+id/ETusername"
         android:layout_width="300dp"
         android:layout_height="48dp"
-        android:text="Enter username."
+        android:hint="Enter username."
         android:layout_gravity="center"/>
 
     <TextView
@@ -71,9 +73,10 @@
         android:layout_marginStart="57dp"/>
 
     <EditText
+        android:id="@+id/ETpass"
         android:layout_width="300dp"
         android:layout_height="48dp"
-        android:text="Enter password here."
+        android:hint="Enter password here."
         android:layout_gravity="center"/>
 
     <TextView
@@ -87,13 +90,14 @@
         android:layout_marginStart="57dp"/>
 
     <EditText
+        android:id="@+id/ETconfirmPass"
         android:layout_width="300dp"
         android:layout_height="48dp"
-        android:text="Re-enter password here."
+        android:hint="Re-enter password here."
         android:layout_gravity="center"/>
 
     <Button
-        android:id="@+id/signup_button"
+        android:id="@+id/signUpBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign-Up"
@@ -106,7 +110,7 @@
         app:cornerRadius="0dp"/>
 
     <TextView
-        android:id="@+id/signup_button_page"
+        android:id="@+id/TVlogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:focusable="true"

@@ -31,10 +31,12 @@ class ConversationActivity : AppCompatActivity() {
         binding = ActivityConversationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        conversationId = intent.getStringExtra("conversation_id") ?: return
+        val conversationId = intent.getStringExtra("conversation_id") ?: "mock_conversation_123"
 
+        // Initialize UI with sample data
         setupRecyclerView()
-        loadConversationItems()
+        loadSampleData() // Load mock data instead of Firebase data
+
         setupSendButton()
     }
 
@@ -46,6 +48,15 @@ class ConversationActivity : AppCompatActivity() {
         conversationList = arrayListOf()
         adapter = ConversationAdapter(conversationList)
         conversationRecyclerView.adapter = adapter
+    }
+
+    private fun loadSampleData() {
+        conversationList.add(ConversationItem(
+            username = "Test User",
+            message = "This is a sample message",
+            message_date = SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault()).format(Date())
+        ))
+        adapter.notifyDataSetChanged()
     }
 
     private fun loadConversationItems() {

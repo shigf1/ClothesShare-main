@@ -8,7 +8,8 @@ data class MessageItem(
     val profile_pic: String ?= null,
     val username: String ?= null,
     val most_recent_message: String ?= null,
-    val most_recent_message_date: String ?= null
+    val most_recent_message_date: String ?= null,
+    val conversationId: String? = null  // Add this field
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),

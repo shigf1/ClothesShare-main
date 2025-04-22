@@ -38,9 +38,10 @@
         android:layout_marginStart="56dp"/>
 
     <EditText
+        android:id="@+id/ETemail"
         android:layout_width="300dp"
         android:layout_height="48dp"
-        android:text="Enter email here."
+        android:hint="Enter email here."
         android:layout_gravity="center"/>
 
     <TextView
@@ -54,9 +55,10 @@
         android:layout_marginStart="56dp"/>
 
     <EditText
+        android:id="@+id/ETpass"
         android:layout_width="300dp"
         android:layout_height="48dp"
-        android:text="Enter password here."
+        android:hint="Enter password here."
         android:layout_gravity="center"/>
 
     <Button

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+
+    <!-- Messages List -->
+
+    <LinearLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/text_secondary"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/conversation_username"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="0dp"
+            android:text="@string/username"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/request_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_bar"
+        layout="@layout/item_request" />
+
+
+    <!-- Message Input Container -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/conversationRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/request_card"
+        android:layout_marginTop="0dp"
+        android:clipToPadding="false"
+        android:padding="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_message_recieved" />
+
+    <LinearLayout
+        android:id="@+id/message_input_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@color/light_grey">
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="5dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Back button"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Message Input -->
+        <EditText
+            android:id="@+id/message_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Type a message..."
+            android:maxLines="4"
+            android:padding="12dp" />
+
+        <!-- Send Button -->
+        <ImageButton
+            android:id="@+id/send_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_send"
+            android:contentDescription="Send message"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

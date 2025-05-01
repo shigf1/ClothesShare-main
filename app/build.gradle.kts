@@ -54,9 +54,15 @@ dependencies {
     implementation(libs.firebase.database)
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.firebase.storage.ktx)
+    implementation(libs.firebase.storage)
+    implementation("com.google.firebase:firebase-auth:22.3.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("com.android.support:design:28.0.0")// Use the latest version
+    implementation(libs.glide)
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
 }

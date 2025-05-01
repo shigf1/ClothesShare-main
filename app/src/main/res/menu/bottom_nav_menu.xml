@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homebutton"
+        android:icon="@drawable/homeicon"
+        android:title=""/>
+    <item
+        android:id="@+id/messagesbutton"
+        android:icon="@drawable/messagesicon"
+        android:title=""/>
+    <item
+        android:id="@+id/uploadbutton"
+        android:icon="@drawable/uploadicon"
+        android:title=""/>
+    <item
+        android:id="@+id/profilebutton"
+        android:icon="@drawable/profileicon"
+        android:title=""/>
+</menu>

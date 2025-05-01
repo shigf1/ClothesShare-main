@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,33 +14,39 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClothesShare"
         tools:targetApi="31">
-
-        <!-- MainActivity is the launcher activity -->
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".SignupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" >
             <intent-filter>
+
                 <!-- This makes the activity the main entry point -->
                 <action android:name="android.intent.action.MAIN" />
                 <!-- This makes the activity appear in the app launcher -->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- ProfileActivity -->
+        <!-- MainActivity is the launcher activity -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"/>
         <activity
             android:name=".ProfileActivity"
-            android:exported="true" />
-
-        <!-- MessagesActivity -->
+            android:exported="true" /> <!-- MessagesActivity -->
         <activity
             android:name=".MessagesActivity"
-            android:exported="true" />
-
-        <!-- UploadActivity -->
+            android:exported="true" /> <!-- UploadActivity -->
         <activity
             android:name=".UploadActivity"
+            android:exported="true" /> <!-- ExperienceActivity -->
+        <activity
+            android:name=".ExperienceActivity"
             android:exported="true" />
+        <activity
+            android:name=".ui.ConversationActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

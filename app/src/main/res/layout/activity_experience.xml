@@ -1,184 +1,328 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@color/background"
     android:id="@+id/experience">
 
-    <!-- Container for the photo collage -->
-    <RelativeLayout
+    <!-- Item Header Card (now top-level element) -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/headerCard"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Featured Photo (Larger) -->
+            <ImageView
+                android:id="@+id/featuredPhoto"
+                android:layout_width="80dp"
+                android:layout_height="100dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/testphoto1"
+                android:contentDescription="Featured look"
+                android:elevation="6dp"/>
+
+            <!-- Item Info -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/featuredPhoto"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/itemName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Green Cargo Pants"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/itemDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Levi's • 1990s • Size M"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Photo Collage Card - Now references headerCard -->
+    <androidx.cardview.widget.CardView
         android:id="@+id/collageContainer"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp">
+        android:layout_height="280dp"
+        android:layout_below="@id/headerCard"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="@color/surface">
 
-        <!-- First Image (Center, large, slightly rotated) -->
-        <ImageView
-            android:id="@+id/photo1"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_centerInParent="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profileuser"
-            android:contentDescription="photo description"
-            android:elevation="4dp" />
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:rowCount="2"
+            android:columnCount="2"
+            android:padding="1dp"> <!-- Small padding to create grid lines -->
 
-        <!-- Second Image (Top-left, medium, slightly rotated) -->
-        <ImageView
-            android:id="@+id/photo2"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profileuser"
-            android:contentDescription="photo description"
-            android:elevation="6dp" />
+            <!-- Row 1, Column 1 -->
+            <ImageView
+                android:id="@+id/photo1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/testphoto1"
+                android:contentDescription="Photo 1"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"/>
 
-        <!-- Third Image (Bottom-right, medium, slightly rotated) -->
-        <ImageView
-            android:id="@+id/photo3"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profileuser"
-            android:contentDescription="photo description"
-            android:elevation="6dp" />
+            <!-- Row 1, Column 2 -->
+            <ImageView
+                android:id="@+id/photo2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/testphoto2"
+                android:contentDescription="Photo 2"
+                android:layout_marginStart="1dp"
+                android:layout_marginBottom="1dp"/>
 
-        <!-- Fourth Image (Top-right, small, slightly rotated) -->
-        <ImageView
-            android:id="@+id/photo4"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profileuser"
-            android:contentDescription="photo description"
-            android:elevation="6dp" />
+            <!-- Row 2, Column 1 -->
+            <ImageView
+                android:id="@+id/photo3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/testphoto3"
+                android:contentDescription="Photo 3"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="1dp"/>
 
-        <!-- Fifth Image (Bottom-left, small, slightly rotated) -->
-        <ImageView
-            android:id="@+id/photo5"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profileuser"
-            android:contentDescription="photo description"
-            android:elevation="6dp" />
+            <!-- Row 2, Column 2 -->
+            <ImageView
+                android:id="@+id/photo4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/testphoto4"
+                android:contentDescription="Photo 4"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"/>
+        </GridLayout>
+    </androidx.cardview.widget.CardView>
 
-    </RelativeLayout>
-
-    <!-- TextView for the description -->
-    <TextView
-        android:id="@+id/experienceDescriptionHeader"
+    <!-- User Experience Card - Now references collageContainer -->
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/collageContainer"
-        android:layout_marginTop="16dp"
-        android:textSize="25sp"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        android:padding="8dp"
-        android:text="Username/User Info" />
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        app:cardBackgroundColor="@color/surface">
 
-    <TextView
-        android:id="@+id/experienceDescriptionTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/experienceDescriptionHeader"
-        android:layout_marginTop="8dp"
-        android:textSize="16sp"
-        android:textColor="@android:color/black"
-        android:padding="8dp"
-        android:text="This is a sample description of the experience with this clothing item." />
+        <!-- [Rest of the experience content remains exactly the same] -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <!-- Next and Previous Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profileImage"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/profileuser"
+                    app:civ_border_width="0.5dp"
+                    app:civ_border_color="@color/border"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="username"
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/experienceDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="June 2023 - Present"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:id="@+id/locationIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/location"
+                    app:tint="@color/text_secondary"/>
+
+                <TextView
+                    android:id="@+id/locationText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="New York"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/experienceDescriptionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="This jacket has been my go-to for weekend adventures. Wore it to concerts, road trips, and even a proposal! The quality has held up amazingly over the years. I've taken it to New York, Italy, and France!"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:lineSpacingMultiplier="1.2"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Action Buttons -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/bottomNavBar"
-        android:layout_marginBottom="16dp"
+        android:layout_margin="16dp"
         android:orientation="horizontal"
-        android:gravity="center_horizontal">
+        android:gravity="center">
 
-        <!-- Previous Button -->
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/previousButton"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Previous"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginEnd="16dp"
-            android:backgroundTint="#673AB7"
-            android:textColor="@android:color/white" />
+            app:icon="@drawable/experienceprevious"
+            app:iconTint="@color/text_primary"
+            app:cornerRadius="24dp"/>
 
-        <!-- Next Button -->
-        <Button
-            android:id="@+id/nextButton"
-
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/requestButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:icon="@drawable/requestimg"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Next"
-            android:backgroundTint="#673AB7"
-            android:textColor="@android:color/white" />
+            android:layout_height="40dp"
+            android:text="Request"
+            android:textColor="@color/text_primary"
+            app:strokeColor="@color/text_primary"
+            app:strokeWidth="1dp"
+            app:cornerRadius="20dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nextButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="26dp"
+            app:icon="@drawable/experiencenext"
+            app:iconTint="@color/text_primary"
+            app:cornerRadius="24dp"/>
     </LinearLayout>
 
-    <!-- Bottom Navigation Bar -->
     <LinearLayout
-        android:id="@+id/bottomNavBar"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
+        android:id="@+id/bottomNavBar"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="#F0F0F0"
         android:weightSum="4"
-        >
+        android:layout_alignParentBottom="true">
+
 
         <ImageButton
             android:id="@+id/homebutton"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="16dp"
             android:src="@drawable/homeicon"
-            android:contentDescription="@string/home_button_description" />
+            android:contentDescription="@string/home_button_description">
+        </ImageButton>
 
         <ImageButton
             android:id="@+id/messagesbutton"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/messagesicon"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="16dp"
-            android:contentDescription="@string/messages_button_description" />
+            android:contentDescription="@string/messages_button_description">
+        </ImageButton>
 
         <ImageButton
             android:id="@+id/uploadbutton"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/uploadicon"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="16dp"
-            android:contentDescription="@string/upload_button_description" />
+            android:contentDescription="@string/upload_button_description">
+        </ImageButton>
 
         <ImageButton
             android:id="@+id/profilebutton"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/profileicon"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="16dp"
-            android:contentDescription="@string/profile_button_description" />
-    </LinearLayout>
+            android:contentDescription="@string/profile_button_description">
+        </ImageButton>
 
+
+    </LinearLayout>
 </RelativeLayout>

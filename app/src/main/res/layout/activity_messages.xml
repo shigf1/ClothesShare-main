@@ -4,7 +4,8 @@
     android:id="@+id/messages"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <!-- Main Content Area -->
     <LinearLayout
@@ -15,23 +16,16 @@
         android:padding="16dp">
 
         <!-- Add your main content here -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/messages_label"
-            android:textSize="18sp"
-            android:textColor="#000000" />
-
+        <!-- Conversation List -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/messages_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             tools:listitem="@layout/active_conversation_design"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-        </androidx.recyclerview.widget.RecyclerView>
+            android:padding="8dp"
+            android:clipToPadding="false"
+            android:scrollbars="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
     </LinearLayout>
 
@@ -59,9 +53,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:src="@drawable/messagesicon"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="16dp"
-            android:src="@drawable/messagesicon"
             android:contentDescription="@string/messages_button_description">
         </ImageButton>
 
@@ -70,9 +64,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:src="@drawable/uploadicon"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="16dp"
-            android:src="@drawable/uploadicon"
             android:contentDescription="@string/upload_button_description">
         </ImageButton>
 
@@ -81,9 +75,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:src="@drawable/profileicon"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="16dp"
-            android:src="@drawable/profileicon"
             android:contentDescription="@string/profile_button_description">
         </ImageButton>
 

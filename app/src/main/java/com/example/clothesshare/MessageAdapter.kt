@@ -26,7 +26,7 @@ class MessageAdapter(private val messages: List<MessageItem>, private val onItem
         val message = messages[position]
 
         Glide.with(holder.itemView.context)
-            .load(message.profile_pic)
+            .load(message.profile_pic).circleCrop()
             .into(holder.profilePicture)
 
         // set username to the username tied to the message

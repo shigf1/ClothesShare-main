@@ -2,68 +2,82 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="7dp"
-    app:cardCornerRadius="0dp">
+    android:layout_margin="4dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    android:background="@color/light_grey">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="8dp">
+        android:padding="12dp"
+        android:background="@color/white">
 
+        <!-- Profile Picture -->
         <ImageView
             android:id="@+id/profile_picture"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/profileuser"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_profile_placeholder"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"/>
 
+        <!-- Username -->
         <TextView
             android:id="@+id/username"
-            android:layout_width="80dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="8dp"
-            android:text="@string/username"
-            android:textSize="15sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/black"
+            android:textSize="20dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/recent_message"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/profile_picture" />
+            android:text="@string/username"
+            app:layout_constraintEnd_toStartOf="@+id/recent_message_date"
+            app:layout_constraintStart_toEndOf="@+id/profile_picture"
+            app:layout_constraintTop_toTopOf="@id/profile_picture"/>
 
+        <!-- Message Preview -->
+        <TextView
+            android:id="@+id/recent_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="16dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/grey"
+            android:text="Sample message preview to be shown before inputing any data"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/profile_picture"
+            app:layout_constraintTop_toBottomOf="@+id/username"/>
+
+        <!-- Timestamp -->
         <TextView
             android:id="@+id/recent_message_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:background="@color/light_grey"
-            android:textColor="@color/darker_grey"
-            android:textSize="13sp"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
-            app:layout_constraintBottom_toTopOf="@+id/recent_message"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.741"
-            app:layout_constraintStart_toEndOf="@+id/username"
-            tools:text="Tue Apr 8 11:11 EST 2025" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:textColor="@color/grey"
+            android:text="04:32"
+            app:layout_constraintBottom_toBottomOf="@+id/username"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-        <TextView
-            android:id="@+id/recent_message"
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/recent_message_label"
-            android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/profile_picture"
-            app:layout_constraintTop_toBottomOf="@+id/username" />
+        <!-- Unread Indicator -->
+        <View
+            android:id="@+id/unread_indicator"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:background="@drawable/circle_background"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_picture"
+            app:layout_constraintEnd_toEndOf="@+id/profile_picture"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

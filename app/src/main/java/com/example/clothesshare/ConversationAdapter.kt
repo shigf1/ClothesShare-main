@@ -68,3 +68,4 @@ class ConversationAdapter(private val messageList: MutableList<ConversationItem>
         }
     }
 }
+

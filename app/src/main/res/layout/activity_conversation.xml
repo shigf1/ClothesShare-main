@@ -6,20 +6,52 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
+
     <!-- Messages List -->
+
+    <LinearLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/text_secondary"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/conversation_username"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="0dp"
+            android:text="@string/username"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/request_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_bar"
+        layout="@layout/item_request" />
+
+
+    <!-- Message Input Container -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/conversationRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_message_recieved"
-        android:layout_above="@+id/message_input_container"
-        android:padding="8dp"
+        android:layout_below="@+id/request_card"
+        android:layout_marginTop="0dp"
         android:clipToPadding="false"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        android:padding="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_message_recieved" />
 
-
-
-    <!-- Message Input Container -->
     <LinearLayout
         android:id="@+id/message_input_container"
         android:layout_width="match_parent"
@@ -27,7 +59,21 @@
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:background="#F5F5F5">
+        android:background="@color/light_grey">
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="5dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Back button"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Message Input -->
         <EditText
@@ -35,9 +81,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_edittext"
             android:hint="Type a message..."
-            android:padding="12dp"
-            android:maxLines="4"/>
+            android:maxLines="4"
+            android:padding="12dp" />
 
         <!-- Send Button -->
         <ImageButton

@@ -8,6 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import android.widget.Toast
+import android.util.Log
+
 
 
 class PostAdapter(private val posts: List<PostItem>, private val onItemClick: (PostItem) -> Unit) :
@@ -36,9 +39,13 @@ class PostAdapter(private val posts: List<PostItem>, private val onItemClick: (P
         // sets description to tvDescription TextView
         holder.tvDescription.text = post.description
 
+        // In PostAdapter.onBindViewHolder(...)
         holder.nextExpoButton.setOnClickListener {
-            onItemClick(post) // Pass the clicked post to the activity
+               // now actually delegate back to MainActivity
+            onItemClick(post)
         }
+
+
     }
 
     // return size/amount of posts

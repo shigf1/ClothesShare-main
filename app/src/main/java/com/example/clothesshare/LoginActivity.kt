@@ -1,5 +1,6 @@
 package com.example.clothesshare
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -32,6 +33,12 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.loginButton.setOnClickListener {
+            val progressDialog = ProgressDialog(this).apply {
+                setMessage("Logging in...")
+                setCancelable(true)
+                show()
+            }
+
             val email = binding.ETemail.text.toString()
             val pass = binding.ETpass.text.toString()
 
@@ -46,17 +53,18 @@ class LoginActivity : AppCompatActivity() {
                                 startActivity(intent)
                             } else {
                                 Toast.makeText(this, "Username not found", Toast.LENGTH_SHORT).show()
+                                progressDialog.dismiss()
                             }
                         }
                     } else {
                         Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
-
+                        progressDialog.dismiss()
                     }
                 }
 
             } else {
                 Toast.makeText(this, "Enter all fields", Toast.LENGTH_SHORT).show()
-
+                progressDialog.dismiss()
             }
         }
     }

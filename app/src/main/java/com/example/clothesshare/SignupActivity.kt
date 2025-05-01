@@ -50,6 +50,15 @@ class SignupActivity : AppCompatActivity() {
                         }
                     }
 
+                    pushUserData(username, email) { success, errorMessage ->
+                        if (success) {
+                            bool = true
+                        } else {
+                            // Handle error
+                            Toast.makeText(this, "Error: $errorMessage", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
                         if (it.isSuccessful) {
                             val intent = Intent(this, LoginActivity::class.java)
@@ -85,6 +94,40 @@ class SignupActivity : AppCompatActivity() {
                 } else {
                     // Save the username-email pair
                     usernamesRef.child(sanitizedEmail).setValue(username)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                onComplete(true, null)
+                            } else {
+                                onComplete(false, task.exception?.message ?: "Failed to save username")
+                            }
+                        }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                onComplete(false, error.message)
+            }
+        })
+    }
+
+    private fun pushUserData(username: String, email: String, onComplete: (Boolean, String?) -> Unit) {
+        // Get database reference
+        val usersRef = FirebaseDatabase.getInstance().getReference("users")
+
+        // Check if email already exists
+        usersRef.child(username).addListenerForSingleValueEvent(object :
+            ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    onComplete(false, "Email already exists in the system")
+                } else {
+                    val user = firebaseAuth.currentUser
+                    val userData = hashMapOf(
+                        "email" to email,
+                        "uid" to user?.uid,
+                        "createdAt" to System.currentTimeMillis()
+                    )
+                    usersRef.child(username).setValue(userData)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 onComplete(true, null)

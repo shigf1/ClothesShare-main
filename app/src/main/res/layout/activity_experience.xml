@@ -85,6 +85,7 @@
 
             <!-- Row 1, Column 1 -->
             <ImageView
+                android:id="@+id/photo1"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
@@ -97,6 +98,7 @@
 
             <!-- Row 1, Column 2 -->
             <ImageView
+                android:id="@+id/photo2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
@@ -109,6 +111,7 @@
 
             <!-- Row 2, Column 1 -->
             <ImageView
+                android:id="@+id/photo3"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
@@ -121,6 +124,7 @@
 
             <!-- Row 2, Column 2 -->
             <ImageView
+                android:id="@+id/photo4"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
@@ -246,7 +250,7 @@
             android:id="@+id/requestButton"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             app:icon="@drawable/requestimg"
-            android:layout_width="130dp"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:text="Request"
             android:textColor="@color/text_primary"
@@ -271,7 +275,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="#F0F0F0"
-        android:weightSum="4">
+        android:weightSum="4"
+        android:layout_alignParentBottom="true">
 
 
         <ImageButton
@@ -319,5 +324,5 @@
         </ImageButton>
 
 
-        </LinearLayout>
-    </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>
